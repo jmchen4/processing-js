@@ -866,6 +866,10 @@
     p.RIGHT = 39;
     p.DOWN = 40;
     p.LEFT = 37;
+    // Used by textAlign
+    p.TOP = 8881;
+    p.BOTTOM = 8882;
+    p.BASELINE = 8883;
 
     var codedKeys = [p.SHIFT, p.CONTROL, p.ALT, p.UP, p.RIGHT, p.DOWN, p.LEFT];
 
@@ -6604,7 +6608,39 @@
       }
     };
 
-    p.textAlign = function textAlign() {};
+    p.textAlign = function textAlign(align,ylign) {      
+      switch (align) {
+      case p.LEFT:
+        curContext.textAlign = "left";
+        break;
+      case p.RIGHT:
+        curContext.textAlign = "right";
+        break;
+      case p.CENTER:
+        curContext.textAlign = "center";
+        break;
+      default:
+        throw "Invalid Horizontal alignment mode";
+      }
+      if (ylign != null){
+        switch (ylign) {
+        case p.TOP:
+           curContext.textBaseline = "top";
+          break;
+        case p.BOTTOM:
+           curContext.textBaseline = "bottom";
+          break;
+        case p.CENTER:
+           curContext.textBaseline = "middle";
+          break;
+        case p.BASELINE:
+           curContext.textBaseline = "alphabetic";
+          break;
+        default:
+          throw "Invalid Vertical alignment mode";
+        }        
+      }
+    };
 
     // A lookup table for characters that can not be referenced by Object 
     p.glyphLook = function glyphLook(font, chr) {
