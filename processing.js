@@ -6687,9 +6687,9 @@
     p.textWidth = function textWidth(str) {
       curContext.font = curTextSize + "px " + curTextFont.name;
       if (curContext.fillText) {
-		return curContext.measureText(str).width;
-		} else if (curContext.mozDrawText) {
-		return curContext.mozMeasureText(str);
+	   return curContext.measureText(str).width;
+	   } else if (curContext.mozDrawText) {
+	   return curContext.mozMeasureText(str);
       }
     };
     
